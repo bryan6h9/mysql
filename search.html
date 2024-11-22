@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Ubicación y Lugares Cercanos</title>
+    <style>
+
+                            /* Estilos del clima */
+
+
+.weather-info {
+  background-image: url('montaña.jpg'); /* Imagen de fondo */
+  background-size: cover;
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0.9; /* Ligera transparencia */
+}
+
+.weather-info:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.weather-info h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.weather-info p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+}
+
+
+
+
+        /* Estilo para el título */
+        @font-face {
+            font-family: 'SFProDisplay';
+            src: url('SFProDisplay-Heavy.ttf') format('truetype');
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 36px;
+            padding: 20px 0;
+            font-family: 'SFProDisplay', sans-serif; /* Usar la fuente que subiste */
+            background-color: rgb(0, 0, 0);
+            margin: 0;
+            border-bottom: none;
+        }
+
+        /* Estilo para la barra de búsqueda */
+        #search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            margin: 20px auto;
+            font-size: 18px;
+            border-radius: 25px;
+            border: none; /* Sin borde visible */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra difusa */
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: white;
+            color: #333;
+        }
+
+        #search-box:focus {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra difusa más pronunciada al hacer foco */
+        }
+
+        #search-box::placeholder {
+            color: #aaa;
+        }
+
+        /* Estilo para el mapa */
+        #map {
+            height: 1000px;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+       
+    
+         /* Estilo general para el cuerpo */
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+    /* Encapsulado para la barra de navegación */
+    nav.custom-navbar {
+        width: 100%;
+        max-width: 1200px; /* Limita el ancho máximo */
+        background-color: #000000; /* Fondo negro */
+        padding: 10px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
+        margin: 0 auto; /* Centra la barra */
+    }
+
+    /* Lista de la barra de navegación */
+    .navbar-list {
+        list-style: none; /* Sin puntos en la lista */
+        margin: 0;
+        padding: 0;
+        display: flex; /* Alinear elementos en fila */
+        justify-content: space-evenly; /* Menor separación entre elementos */
+        align-items: center; /* Centrar verticalmente */
+    }
+
+    /* Elementos individuales de la barra */
+    .navbar-item {
+        margin: 0 5px; /* Espaciado horizontal reducido */
+    }
+
+    /* Estilos para los enlaces */
+    .navbar-link {
+        text-decoration: none; /* Sin subrayado */
+        color: white; /* Color del texto */
+        font-size: 16px; /* Tamaño del texto */
+        font-weight: bold; /* Texto en negrita */
+        padding: 8px 15px; /* Espaciado interno de los botones */
+        border: 2px solid #f2ff00; /* Borde amarillo */
+        border-radius: 19px; /* Bordes redondeados */
+        transition: all 0.3s ease; /* Transición para animaciones */
+    }
+
+    /* Efecto hover en los enlaces */
+    .navbar-link:hover {
+        color: #f2ff00; /* Texto amarillo */
+        background-color: rgb(0, 0, 0); /* Fondo transparente */
+        box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8); /* Sombra amarilla */
+        transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+    }
+
+    /* Animaciones iniciales */
+    .navbar-item {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Definición de la animación */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .navbar-list {
+            flex-direction: column; /* Apilar elementos verticalmente en pantallas pequeñas */
+            align-items: flex-start; /* Alinear al principio */
+        }
+
+        .navbar-item {
+            margin: 8px 0; /* Separación vertical entre elementos */
+        }
+    }
+</style>
+
+
+     
+
+
+
+        
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <h1>Ubicación Actual y Lugares Cercanos</h1>
+    <nav class="custom-navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="about.html" class="navbar-link">Acerca de</a></li>
+          <li class="navbar-item"><a href="paypalindex.html" class="navbar-link">Productos</a></li>
+          <li class="navbar-item"><a href="home.html" class="navbar-link">Inicio</a></li>
+        </ul>
+    </nav>  
+
+
+
+
+    <main>
+    
+
+        <div id="weather" class="weather-info" style="display: none;">
+          <h3>Clima Actual</h3>
+          <p id="temperature"></p>
+          <p id="weather-description"></p>
+          <p id="humidity"></p>
+        </div>
+        </main>   
+        <script>
+            function logout() {
+              fetch('/logout', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              })
+              .then(response => {
+                if (response.ok) {
+                  window.location.href = 'login.html';
+                } else {
+                  alert('Hubo un error al cerrar la sesión');
+                }
+              });
+            }
+        
+            function requestLocation() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+              } else {
+                alert("Geolocalización no soportada por este navegador.");
+              }
+            }
+        
+            function showPosition(position) {
+              const lat = position.coords.latitude;
+              const lon = position.coords.longitude;
+              getWeather(lat, lon);
+            }
+        
+            function showError(error) {
+              alert("No se pudo obtener la ubicación. Usaremos una ubicación predeterminada.");
+              getWeather(31.73, -106.48); // Ciudad Juárez
+            }
+        
+            function getWeather(lat, lon) {
+              const apiKey = 'f9cea72b1a2f5c523690543b4c201e2b';
+              const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`;
+        
+              fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                  if (data.cod === 200) {
+                    const temp = data.main.temp;
+                    const weatherDescription = data.weather[0].description;
+                    const humidity = data.main.humidity;
+        
+                    document.getElementById('weather').style.display = 'block';
+                    document.getElementById('temperature').textContent = `Temperatura: ${temp}°C`;
+                    document.getElementById('weather-description').textContent = `Descripción: ${weatherDescription}`;
+                    document.getElementById('humidity').textContent = `Humedad: ${humidity}%`;
+                  } else {
+                    console.log('No se pudo obtener la información del clima');
+                  }
+                })
+                .catch(error => {
+                  console.error('Error al obtener el clima: ', error);
+                });
+            }
+        
+            window.onload = requestLocation;
+          </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <!-- Barra de búsqueda para lugares -->
+    <input id="search-box" type="text" placeholder="Buscar lugares..." />
+
+    
+
+    <div id="map"></div>
+    
+    <script>
+        let map, service, infowindow, searchBox;
+        let markers = [];
+
+        // Función para inicializar el mapa
+        function initMap() {
+            // Usamos la geolocalización del navegador para obtener la ubicación actual
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    
+                    // Inicializamos el mapa centrado en la ubicación del usuario
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: userLocation,
+                        zoom: 15
+                    });
+
+                    // Creamos un marcador para la ubicación del usuario
+                    const marker = new google.maps.Marker({
+                        map: map,
+                        position: userLocation,
+                        title: "Tu Ubicación"
+                    });
+
+                    // Mostramos la ubicación en la ventana de información
+                    infowindow = new google.maps.InfoWindow();
+                    infowindow.setContent("Estás aquí");
+                    infowindow.open(map, marker);
+
+                    // Barra de búsqueda
+                    searchBox = new google.maps.places.SearchBox(document.getElementById('search-box'));
+
+                    // Actualizar los resultados al hacer una búsqueda
+                    map.addListener('bounds_changed', function() {
+                        searchBox.setBounds(map.getBounds());
+                    });
+
+                    // Cuando se selecciona un lugar de la barra de búsqueda
+                    searchBox.addListener('places_changed', function() {
+                        const places = searchBox.getPlaces();
+
+                        if (places.length == 0) {
+                            return;
+                        }
+
+                        // Eliminar los marcadores previos antes de agregar nuevos
+                        clearMarkers(); // Llamamos a la función para borrar los marcadores previos
+
+                        // Mostrar los lugares encontrados
+                        const bounds = new google.maps.LatLngBounds();
+                        places.forEach(function(place) {
+                            if (!place.geometry) {
+                                return;
+                            }
+
+                            // Crear un marcador para el lugar
+                            const marker = new google.maps.Marker({
+                                map: map,
+                                title: place.name,
+                                position: place.geometry.location
+                            });
+
+                            // Agregar marcador al arreglo
+                            markers.push(marker);
+
+                            // Crear una ventana de información
+                            google.maps.event.addListener(marker, 'click', function() {
+                                infowindow.setContent(place.name);
+                                infowindow.open(map, marker);
+                            });
+
+                            // Expandir el mapa para ajustar los resultados
+                            bounds.extend(place.geometry.location);
+                        });
+                        map.fitBounds(bounds); // Ajusta el mapa al nuevo conjunto de resultados
+                    });
+
+                }, function() {
+                    alert("No se pudo obtener tu ubicación.");
+                });
+            } else {
+                alert("La geolocalización no es compatible con este navegador.");
+            }
+        }
+
+        // Función para limpiar los marcadores del mapa
+        function clearMarkers() {
+            markers.forEach(function(marker) {
+                marker.setMap(null); // Elimina cada marcador del mapa
+            });
+            markers = []; // Resetea el arreglo de marcadores
+        }
+
+    </script>
+    
+   
+
+
+                        
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <!-- Cargar el SDK de Google Maps con tu clave de API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiMp-o6OdDuW5zEqAjejfjlx1oFHOt420&libraries=places&callback=initMap" async defer></script>
+</body>
+</html>

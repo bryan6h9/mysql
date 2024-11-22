@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Audífonos - Comprar Audífonos Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @font-face { font-family: 'Sharpy'; src: url('fonts/Sharpy.otf') format('opentype'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'SFProDisplay'; src: url('SFProDisplay-Heavy.ttf') format('truetype'); font-weight: bold; }
+
+        .custom-font {
+            font-family: 'Sharpy', sans-serif;
+            font-size: 21px;
+            color: white;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+    }
+
+        
+/* Estilos del clima */
+
+
+.weather-info {
+  background-image: url('montaña.jpg'); /* Imagen de fondo */
+  background-size: cover;
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0.9; /* Ligera transparencia */
+}
+
+.weather-info:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.weather-info h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.weather-info p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+        body {
+            font-family: 'SFProDisplay', Arial, sans-serif;
+            background-color: rgb(0, 0, 0);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-image: url('amarillofondo.jpg');
+            font-size: 25px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 0.2px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 15px; /* Más redondeado */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombreado más suave */
+            padding: 12px;
+            margin: 10px; /* Contenedores más juntos */
+            flex: 0 1 calc(30% - 20px); /* Más estrechos */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            max-width: 200px; /* Contenedores más pequeños */
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra al hacer hover */
+        }
+
+        .product img {
+            max-width: 160px; /* Imagen más pequeña */
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: black;
+            margin: 0 0 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+         /* Encapsulado para la barra de navegación */
+    nav.custom-navbar {
+        width: 100%;
+        max-width: 1200px; /* Limita el ancho máximo */
+        background-color: #000000; /* Fondo negro */
+        padding: 10px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
+        margin: 0 auto; /* Centra la barra */
+    }
+
+    /* Lista de la barra de navegación */
+    .navbar-list {
+        list-style: none; /* Sin puntos en la lista */
+        margin: 0;
+        padding: 0;
+        display: flex; /* Alinear elementos en fila */
+        justify-content: space-evenly; /* Menor separación entre elementos */
+        align-items: center; /* Centrar verticalmente */
+    }
+
+    /* Elementos individuales de la barra */
+    .navbar-item {
+        margin: 0 5px; /* Espaciado horizontal reducido */
+    }
+
+    /* Estilos para los enlaces */
+    .navbar-link {
+        text-decoration: none; /* Sin subrayado */
+        color: white; /* Color del texto */
+        font-size: 16px; /* Tamaño del texto */
+        font-weight: bold; /* Texto en negrita */
+        padding: 8px 15px; /* Espaciado interno de los botones */
+        border: 2px solid #f2ff00; /* Borde amarillo */
+        border-radius: 19px; /* Bordes redondeados */
+        transition: all 0.3s ease; /* Transición para animaciones */
+    }
+
+    /* Efecto hover en los enlaces */
+    .navbar-link:hover {
+        color: #f2ff00; /* Texto amarillo */
+        background-color: rgb(0, 0, 0); /* Fondo transparente */
+        box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8); /* Sombra amarilla */
+        transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+    }
+
+    /* Animaciones iniciales */
+    .navbar-item {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Definición de la animación */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .navbar-list {
+            flex-direction: column; /* Apilar elementos verticalmente en pantallas pequeñas */
+            align-items: flex-start; /* Alinear al principio */
+        }
+
+        .navbar-item {
+            margin: 8px 0; /* Separación vertical entre elementos */
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SoundBry❤️</h1>
+        <p class="custom-font">La excelencia en sonido</p>
+        
+
+        
+    </header>
+    <nav class="custom-navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="search.html" class="navbar-link">Búsqueda</a></li>
+          <li class="navbar-item"><a href="about.html" class="navbar-link">Acerca de</a></li>
+          <li class="navbar-item"><a href="home.html" class="navbar-link">Inicio</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Producto 1 -->
+        <div class="product">
+            <img src="xm5 2.png" alt="Audífonos Sony WF-1000XM5">
+            <h2 class="product-title">Sony WF-1000XM5</h2>
+            <p class="product-price">$290.00 US</p>
+            <!-- Botón de PayPal -->
+            <div id="paypal-button-container-1"></div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product">
+            <img src="galaxybuds2pro.png" alt="Galaxy Buds 2 Pro">
+            <h2 class="product-title">Galaxy Buds 2 Pro</h2>
+            <p class="product-price">$200.00 US</p>
+            <!-- Botón de PayPal -->
+            <div id="paypal-button-container-2"></div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product">
+            <img src="airpod2pro.png" alt="AirPods Pro">
+            <h2 class="product-title">AirPods Pro</h2>
+            <p class="product-price">$220.00 US</p>
+            <!-- Botón de PayPal -->
+            <div id="paypal-button-container-3"></div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="product">
+            <img src="senheiser mm4.png" alt="AirPods Pro">
+            <h2 class="product-title">AirPods Pro</h2>
+            <p class="product-price">$320.00 US</p>
+            <!-- Botón de PayPal -->
+            <div id="paypal-button-container-4"></div>
+        </div>
+
+    </div>
+
+
+    <!-- Cargar el SDK de PayPal con tu Client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Aaswf6EUR4wHiCPTnHHHdmBvRRExF4GlSjdoOeVC05LzYnNyiISLyDl-z60VTSRin-CLpY-_udZ7ZLaL&currency=USD"></script>
+    <script>
+        // Agregar botones de PayPal para cada producto
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '290.00' // Precio de Sony WF-1000XM5
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago exitoso de ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container-1');
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '200.00' // Precio de Galaxy Buds 2 Pro
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago exitoso de ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container-2');
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '220.00' // Precio de AirPods Pro
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago exitoso de ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container-3');
+
+
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '320.00' // Precio de Sony WF-1000XM5
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago exitoso de ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container-4');
+
+        
+
+        
+    </script>
+    
+    <main>
+    
+
+    <div id="weather" class="weather-info" style="display: none;">
+      <h3>Clima Actual</h3>
+      <p id="temperature"></p>
+      <p id="weather-description"></p>
+      <p id="humidity"></p>
+    </div>
+    </main>   
+    <script>
+        function logout() {
+          fetch('/logout', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => {
+            if (response.ok) {
+              window.location.href = 'login.html';
+            } else {
+              alert('Hubo un error al cerrar la sesión');
+            }
+          });
+        }
+    
+        function requestLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+          } else {
+            alert("Geolocalización no soportada por este navegador.");
+          }
+        }
+    
+        function showPosition(position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          getWeather(lat, lon);
+        }
+    
+        function showError(error) {
+          alert("No se pudo obtener la ubicación. Usaremos una ubicación predeterminada.");
+          getWeather(31.73, -106.48); // Ciudad Juárez
+        }
+    
+        function getWeather(lat, lon) {
+          const apiKey = 'f9cea72b1a2f5c523690543b4c201e2b';
+          const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`;
+    
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              if (data.cod === 200) {
+                const temp = data.main.temp;
+                const weatherDescription = data.weather[0].description;
+                const humidity = data.main.humidity;
+    
+                document.getElementById('weather').style.display = 'block';
+                document.getElementById('temperature').textContent = `Temperatura: ${temp}°C`;
+                document.getElementById('weather-description').textContent = `Descripción: ${weatherDescription}`;
+                document.getElementById('humidity').textContent = `Humedad: ${humidity}%`;
+              } else {
+                console.log('No se pudo obtener la información del clima');
+              }
+            })
+            .catch(error => {
+              console.error('Error al obtener el clima: ', error);
+            });
+        }
+    
+        window.onload = requestLocation;
+      </script>
+
+
+
+
+
+
+
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+</body>
+</html>

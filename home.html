@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Tienda Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos globales */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000000; /* Fondo oscuro */
+      color: #fff;
+    }
+
+    header {
+      background-color: #000000; /* Fondo negro */
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      /* Borde eliminado */
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+     /* Encapsulado para la barra de navegación */
+    nav.custom-navbar {
+        width: 100%;
+        max-width: 1200px; /* Limita el ancho máximo */
+        background-color: #000000; /* Fondo negro */
+        padding: 10px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
+        margin: 0 auto; /* Centra la barra */
+    }
+
+    /* Lista de la barra de navegación */
+    .navbar-list {
+        list-style: none; /* Sin puntos en la lista */
+        margin: 0;
+        padding: 0;
+        display: flex; /* Alinear elementos en fila */
+        justify-content: space-evenly; /* Menor separación entre elementos */
+        align-items: center; /* Centrar verticalmente */
+    }
+
+    /* Elementos individuales de la barra */
+    .navbar-item {
+        margin: 0 5px; /* Espaciado horizontal reducido */
+    }
+
+    /* Estilos para los enlaces */
+    .navbar-link {
+        text-decoration: none; /* Sin subrayado */
+        color: white; /* Color del texto */
+        font-size: 16px; /* Tamaño del texto */
+        font-weight: bold; /* Texto en negrita */
+        padding: 8px 15px; /* Espaciado interno de los botones */
+        border: 2px solid #f2ff00; /* Borde amarillo */
+        border-radius: 19px; /* Bordes redondeados */
+        transition: all 0.3s ease; /* Transición para animaciones */
+    }
+
+    /* Efecto hover en los enlaces */
+    .navbar-link:hover {
+        color: #f2ff00; /* Texto amarillo */
+        background-color: rgb(0, 0, 0); /* Fondo transparente */
+        box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8); /* Sombra amarilla */
+        transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+    }
+
+    /* Animaciones iniciales */
+    .navbar-item {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Definición de la animación */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .navbar-list {
+            flex-direction: column; /* Apilar elementos verticalmente en pantallas pequeñas */
+            align-items: flex-start; /* Alinear al principio */
+        }
+
+        .navbar-item {
+            margin: 8px 0; /* Separación vertical entre elementos */
+        }
+    }
+
+    main {
+      text-align: center;
+      padding: 3rem;
+      background-color: rgb(0, 0, 0); /* Fondo oscuro traslúcido */
+      border-radius: 15px;
+      box-shadow: 0 10px 15px rgb(0, 0, 0);
+      margin: 20px auto;
+      max-width: 1200px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    main:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 25px rgb(0, 0, 0);
+    }
+
+    main h2 {
+      color: #fff;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .logout-btn {
+      background-color: #f44336;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 20px;
+    }
+
+    .logout-btn:hover {
+      background-color: #e53935;
+      transform: scale(1.05);
+    }
+
+    /* Estilos del clima */
+    .weather-info {
+      background-image: url('montaña.jpg'); /* Imagen de fondo */
+      background-size: cover;
+      color: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 18px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0.9; /* Ligera transparencia */
+    }
+
+    .weather-info:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .weather-info h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .weather-info p {
+      margin: 5px 0;
+      font-size: 1.1rem;
+    }
+
+    /* Animación de entrada */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Aplicando animación a las secciones */
+    header, nav, main, footer {
+      animation: fadeIn 1s ease-in;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenido a SoundBry</h1>
+    <p>Selecciona una de las opciones del menú para continuar</p>
+  </header>
+
+  <nav class="custom-navbar">
+    <ul class="navbar-list">
+      <li class="navbar-item"><a href="search.html" class="navbar-link">Búsqueda</a></li>
+      <li class="navbar-item"><a href="paypalindex.html" class="navbar-link">Productos</a></li>
+      <li class="navbar-item"><a href="about.html" class="navbar-link">Acerca de</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+
+    <div id="weather" class="weather-info" style="display: none;">
+      <h3>Clima Actual</h3>
+      <p id="temperature"></p>
+      <p id="weather-description"></p>
+      <p id="humidity"></p>
+    </div>
+  </main>
+
+  <script>
+    function logout() {
+      fetch('/logout', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = 'login.html';
+        } else {
+          alert('Hubo un error al cerrar la sesión');
+        }
+      });
+    }
+
+    function requestLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        alert("Geolocalización no soportada por este navegador.");
+      }
+    }
+
+    function showPosition(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      getWeather(lat, lon);
+    }
+
+    function showError(error) {
+      alert("No se pudo obtener la ubicación. Usaremos una ubicación predeterminada.");
+      getWeather(31.73, -106.48); // Ciudad Juárez
+    }
+
+    function getWeather(lat, lon) {
+      const apiKey = 'f9cea72b1a2f5c523690543b4c201e2b';
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('weather').style.display = 'block';
+          document.getElementById('temperature').textContent = `Temperatura: ${data.main.temp}°C`;
+          document.getElementById('weather-description').textContent = `Descripción: ${data.weather[0].description}`;
+          document.getElementById('humidity').textContent = `Humedad: ${data.main.humidity}%`;
+        })
+        .catch(error => alert('Error al obtener datos del clima'));
+    }
+
+    // Pedir la ubicación al cargar la página
+    window.onload = requestLocation;
+  </script>
+
+ 
+</body>
+</html>

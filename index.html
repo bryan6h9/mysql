@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenido a Tienda Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Estilo Global */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000; /* Fondo negro */
+      color: #fff; /* Texto blanco */
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 60vh; /* Reducir la altura */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('hero-image.jpg') no-repeat center center/cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7); /* Capa de superposición negra */
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin: 0 20px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-content h1 .highlight {
+      color: #e50914; /* Rojo elegante */
+      animation: pulse 1.5s infinite;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #aaa;
+    }
+
+    .hero-content img {
+      margin-top: 20px;
+      width: 250px; /* Ancho fijo */
+      height: 150px; /* Altura fija */
+      border-radius: 10px; /* Bordes redondeados */
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        text-shadow: 0 0 10px #e50914, 0 0 20px #e50914;
+      }
+      50% {
+        text-shadow: 0 0 20px #ff4b5c, 0 0 30px #ff4b5c;
+      }
+    }
+
+    /* Sección Acceso */
+    .access-section {
+      text-align: center;
+      padding: 20px 20px; /* Reducir el padding */
+      margin-top: -20px; /* Eliminar espacio entre secciones */
+    }
+
+    .access-section h2 {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .access-section p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .auth-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px; /* Reducir padding */
+      font-size: 1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn.primary-btn {
+      background-color: #e50914;
+      color: #fff;
+      border: 2px solid #e50914;
+    }
+
+    .btn.primary-btn:hover {
+      background-color: transparent;
+      color: #e50914;
+    }
+
+    .btn.secondary-btn {
+      background-color: transparent;
+      color: #e50914;
+      border: 2px solid #e50914;
+    }
+
+    .btn.secondary-btn:hover {
+      background-color: #e50914;
+      color: #fff;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .access-section h2 {
+        font-size: 1.6rem;
+      }
+
+      .auth-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero-content img {
+        width: 200px; /* Ancho para pantallas pequeñas */
+        height: 120px; /* Altura para pantallas pequeñas */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header>
+    <div class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Descubre lo mejor en <span class="highlight">SoundBry</span></h1>
+        <p>Compra productos exclusivos</p>
+        <!-- Imagen con tamaño manual -->
+        <img src="audiorey.jpg" alt="Producto Destacado">
+      </div>
+    </div>
+  </header>
+
+  <!-- Access Section -->
+  <main>
+    <section class="access-section">
+      <h2>Acceso necesario</h2>
+      <p>Para disfrutar de nuestra tienda, por favor ingresa o regístrate ahora mismo.</p>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn primary-btn">Iniciar Sesión</a>
+        <a href="register.html" class="btn secondary-btn">Registrarse</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
